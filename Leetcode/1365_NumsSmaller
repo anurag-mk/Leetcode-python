@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr 25 02:30:29 2022
+
+@author: anurag
+"""
+
+def smaller_than(nums):
+    cnt =[]
+    for i in range(len(nums)):
+        temp = 0
+        for j in range(len(nums)):
+            if nums[i]>nums[j] and i!=j:
+                 temp += 1
+        cnt.append(temp)
+        
+    return cnt
+
+
+
+def sort_nums(nums):
+    sorted_nums = sorted(nums, reverse =True)
+    small_cnt = {}
+    for i in range(len(sorted_nums)-1):
+        curr_num = sorted_nums[i]
+        next_num = sorted_nums[i+1]
+        if next_num < curr_num:
+            rem_val = len(sorted_nums) - (i+1)
+            small_cnt[curr_num] = rem_val
+            
+    small_cnt[sorted_nums[-1]]=0
+    
+    output = []
+    for num in nums:
+        output.append(small_cnt[num])
+        
+    return output
